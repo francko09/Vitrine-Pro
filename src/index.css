@@ -1,0 +1,396 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%; /* Light mode background - white */
+  --foreground: 222.2 84% 4.9%; /* Light mode text - dark gray */
+
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+
+  /* Dark Green Theme */
+  --primary: 145 40% 30%; /* Dark Green */
+  --primary-hover: 145 40% 25%; /* Darker Green for hover */
+  --primary-foreground: 0 0% 98%; /* Light text for primary */
+
+  --secondary: 210 40% 96.1%; /* Light gray */
+  --secondary-foreground: 222.2 47.4% 11.2%; /* Dark gray text for secondary */
+
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 217.2 32.6% 17.5%;
+
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 145 40% 30%; /* Dark Green for focus rings */
+
+  --radius: 0.5rem;
+  --radius-container: 0.75rem;
+  --spacing-section: 2rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 0 0% 98%;
+
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 0 0% 98%;
+
+  /* Dark Green Theme - Dark Mode */
+  --primary: 145 35% 45%; /* Slightly Lighter/Vibrant Green for dark mode */
+  --primary-hover: 145 35% 50%; /* Lighter Green for dark mode hover */
+  --primary-foreground: 0 0% 98%;
+
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 0 0% 98%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 145 35% 45%; /* Green for dark mode focus rings */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans text-lg;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+}
+
+/* Responsive input field */
+.auth-input-field {
+  @apply w-full px-3 py-2 sm:px-4 sm:py-3 rounded-md bg-background border-input focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow shadow-sm hover:shadow-md text-sm sm:text-base;
+  @apply dark:bg-muted dark:border-border dark:text-foreground dark:placeholder-muted-foreground dark:focus:border-primary dark:focus:ring-primary;
+}
+
+.auth-button {
+  @apply w-full px-3 py-2 sm:px-4 sm:py-3 rounded-md bg-primary text-primary-foreground font-semibold hover:bg-primary-hover transition-colors shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base;
+  @apply dark:bg-primary dark:text-primary-foreground dark:hover:bg-primary-hover;
+}
+
+/* Responsive button styles */
+.button {
+  @apply px-2 py-1 sm:px-4 sm:py-2 rounded-md font-medium transition-colors text-xs sm:text-sm;
+}
+.button-primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary-hover;
+}
+.button-secondary {
+  @apply bg-secondary text-secondary-foreground hover:bg-muted dark:bg-secondary dark:text-secondary-foreground dark:hover:bg-muted;
+}
+
+.text-primary {
+  color: hsl(var(--primary));
+}
+.dark .text-primary {
+  color: hsl(var(--primary));
+}
+
+.text-secondary {
+  @apply text-muted-foreground;
+}
+.dark .text-secondary {
+  @apply dark:text-muted-foreground;
+}
+
+.bg-white {
+  @apply bg-card dark:bg-card;
+}
+.text-gray-800 {
+  @apply text-card-foreground dark:text-card-foreground;
+}
+.text-gray-700 {
+  @apply text-muted-foreground dark:text-muted-foreground;
+}
+.text-gray-500 {
+  @apply text-muted-foreground/80 dark:text-muted-foreground/80;
+}
+.border-gray-200 {
+  @apply border-border dark:border-border;
+}
+.border-gray-300 {
+  @apply border-input dark:border-input;
+}
+.hover\:border-gray-400:hover {
+  @apply hover:border-ring dark:hover:border-ring;
+}
+.bg-gray-50 {
+  @apply bg-background dark:bg-background;
+}
+.bg-gray-100 {
+  @apply bg-muted dark:bg-muted;
+}
+.bg-gray-200 {
+  @apply bg-secondary dark:bg-secondary;
+}
+.hover\:bg-gray-300:hover {
+  @apply hover:bg-muted dark:hover:bg-muted;
+}
+
+/* Responsive navigation */
+.nav-button-active {
+  @apply bg-primary text-primary-foreground;
+}
+.nav-button-inactive {
+  @apply bg-secondary text-secondary-foreground hover:bg-muted dark:bg-secondary dark:text-secondary-foreground dark:hover:bg-muted;
+}
+
+/* Responsive like button */
+.like-button-liked {
+  @apply bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700;
+}
+.like-button-unliked {
+  @apply bg-secondary text-secondary-foreground hover:bg-muted dark:bg-secondary dark:text-secondary-foreground dark:hover:bg-muted;
+}
+.like-button-disabled {
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+/* Responsive delete button */
+.delete-button {
+  @apply px-2 py-1 sm:px-3 sm:py-1.5 rounded-md bg-red-100 text-red-700 hover:bg-red-200 transition-colors disabled:opacity-50 text-xs sm:text-sm;
+  @apply dark:bg-red-900 dark:text-red-300 dark:hover:bg-red-800;
+}
+
+/* Upload area responsive */
+.upload-area-dragover {
+  @apply border-primary bg-primary/10 dark:border-primary dark:bg-primary/20;
+}
+.upload-area-selected {
+  @apply bg-green-50 border-green-500 dark:bg-green-900/30 dark:border-green-700;
+}
+.upload-area-default {
+  @apply bg-background dark:bg-secondary;
+}
+
+.border-primary {
+  border-color: hsl(var(--primary));
+}
+.dark .border-primary {
+  border-color: hsl(var(--primary));
+}
+
+.border-b-2.border-primary {
+  border-bottom-color: hsl(var(--primary));
+}
+.dark .border-b-2.border-primary {
+  border-bottom-color: hsl(var(--primary));
+}
+
+.header-background {
+  @apply bg-card/95 dark:bg-card/95 backdrop-blur-sm;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 640px) {
+  .mobile-padding {
+    @apply px-3;
+  }
+
+  .mobile-text {
+    @apply text-sm;
+  }
+
+  .mobile-button {
+    @apply px-2 py-1 text-xs;
+  }
+
+  .mobile-icon {
+    @apply w-4 h-4;
+  }
+
+  .mobile-avatar {
+    @apply w-8 h-8;
+  }
+
+  .mobile-card-padding {
+    @apply p-3;
+  }
+}
+
+/* Tablet-specific styles */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet-padding {
+    @apply px-4;
+  }
+
+  .tablet-text {
+    @apply text-base;
+  }
+}
+
+/* Touch-friendly interactive elements */
+@media (hover: none) and (pointer: coarse) {
+  .button,
+  .auth-button,
+  .delete-button {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  .like-button-liked,
+  .like-button-unliked {
+    @apply min-h-[44px];
+  }
+}
+
+/* Improved scrolling on mobile */
+.scroll-smooth {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Better focus states for accessibility */
+.focus-visible {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+}
+
+/* Image container responsive with transparent background */
+.image-container {
+  @apply relative w-full;
+  max-height: 80vh;
+}
+
+.image-container img {
+  @apply w-full h-auto object-contain;
+  max-height: inherit;
+}
+
+/* Transparent background pattern for images */
+.image-transparent-bg {
+  background-image:
+    linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+    linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+    linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+  background-size: 20px 20px;
+  background-position:
+    0 0,
+    0 10px,
+    10px -10px,
+    -10px 0px;
+}
+
+.dark .image-transparent-bg {
+  background-image:
+    linear-gradient(45deg, #404040 25%, transparent 25%),
+    linear-gradient(-45deg, #404040 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #404040 75%),
+    linear-gradient(-45deg, transparent 75%, #404040 75%);
+  background-size: 20px 20px;
+  background-position:
+    0 0,
+    0 10px,
+    10px -10px,
+    -10px 0px;
+}
+
+/* Modal responsive */
+.modal-container {
+  @apply fixed inset-0 bg-black/50 flex items-center justify-center p-2 sm:p-4 z-50;
+}
+
+.modal-content {
+  @apply bg-card p-4 sm:p-6 rounded-lg shadow-xl w-full max-w-sm sm:max-w-md mx-2;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Search bar responsive */
+.search-container {
+  @apply relative w-full max-w-sm sm:max-w-md mx-auto mb-4 sm:mb-6;
+}
+
+.search-input {
+  @apply w-full pl-8 sm:pl-10 pr-8 sm:pr-10 py-2 sm:py-3 rounded-lg border border-input bg-background text-foreground placeholder-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm sm:text-base;
+}
+
+/* Card responsive spacing */
+.card-spacing {
+  @apply space-y-4 sm:space-y-6 lg:space-y-8;
+}
+
+/* Header responsive */
+.header-container {
+  @apply sticky top-0 z-10 header-background h-14 sm:h-16 flex justify-between items-center border-b border-border shadow-sm px-3 sm:px-4;
+}
+
+.header-title {
+  @apply text-lg sm:text-xl font-semibold text-primary;
+}
+
+/* Content responsive */
+.main-content {
+  @apply flex-1 flex flex-col items-center justify-start p-3 sm:p-4 md:p-6 lg:p-8;
+}
+
+.content-container {
+  @apply w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto;
+}
+
+/* Form responsive */
+.form-container {
+  @apply p-4 sm:p-6 bg-card rounded-lg shadow-md;
+}
+
+.form-title {
+  @apply text-xl sm:text-2xl font-semibold text-card-foreground mb-4 sm:mb-6 text-center;
+}
+
+/* Action buttons responsive */
+.action-buttons {
+  @apply flex flex-wrap items-center gap-2 sm:gap-4;
+}
+
+.action-button {
+  @apply flex items-center gap-1 px-2 py-1 sm:px-3 sm:py-1.5 rounded-md transition-colors text-xs sm:text-sm;
+}
+
+/* Comment section responsive */
+.comment-container {
+  @apply pt-3 sm:pt-4 mt-3 sm:mt-4 border-t border-border;
+}
+
+.comment-item {
+  @apply text-xs sm:text-sm flex items-start gap-2;
+}
+
+.comment-avatar {
+  @apply w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover border border-border mt-0.5 flex-shrink-0;
+}
+
+.comment-form {
+  @apply flex gap-1 sm:gap-2;
+}
+
+.comment-input {
+  @apply flex-grow auth-input-field py-1.5 sm:py-2 text-xs sm:text-sm;
+}
+
+.comment-submit {
+  @apply button button-primary text-xs sm:text-sm py-1.5 sm:py-2 px-2 sm:px-3;
+}
